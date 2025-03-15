@@ -1,0 +1,143 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              
+              const Text(
+                'LAB # 3 Manahil',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              // Top Red Container with inner Blue Box
+              Container(
+                width: 250,
+                height: 100,
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                  child: Container(
+                    width: 120,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      border: Border.all(color: Colors.blue, width: 6),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 40),
+
+              //  Overlapping Containers
+              Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    width: 100,
+                    height: 100,
+                    color: Colors.blue, // Large Box
+                  ),
+                  Positioned(
+                    top: 10,
+                    right: 10,
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      color: Colors.green, // Small Box
+                    ),
+                  ),
+                  Positioned(
+                    bottom: -20,
+                    child: Container(
+                      width: 40,
+                      height: 200,
+                      color: Colors.brown, // Vertical bar
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List.generate(
+                          9,
+                              (index) => Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4),
+                            child: Center(
+                              child: Text(
+                                '${index + 1}',
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 40),
+
+              //  Bottom Green Box 
+              Container(
+                width: 250,
+                height: 80,
+                decoration: BoxDecoration(
+                  color: Colors.green,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: const [
+                    Text(
+                      'LEADING',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    CircleAvatar(
+                      backgroundColor: Colors.yellow,
+                      radius: 25,
+                    ),
+                    Text(
+                      'TRAILING',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 40),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
